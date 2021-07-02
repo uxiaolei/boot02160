@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generate.Role-middle-userDao">
+  <resultMap id="BaseResultMap" type="generate.Role-middle-user">
+    <result column="r_id" jdbcType="INTEGER" property="rId" />
+    <result column="u_id" jdbcType="INTEGER" property="uId" />
+  </resultMap>
+  <insert id="insert" parameterType="generate.Role-middle-user">
+    insert into role-middle-user (r_id, u_id)
+    values (#{rId,jdbcType=INTEGER}, #{uId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="generate.Role-middle-user">
+    insert into role-middle-user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        r_id,
+      </if>
+      <if test="uId != null">
+        u_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rId != null">
+        #{rId,jdbcType=INTEGER},
+      </if>
+      <if test="uId != null">
+        #{uId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>
